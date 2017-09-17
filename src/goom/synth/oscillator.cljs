@@ -1,4 +1,5 @@
-(ns goom.synth.oscillator)
+(ns goom.synth.oscillator
+  (:require [reagent.interop :refer [$]]))
 
 (defn osc-node
   [shape ctx]
@@ -11,5 +12,5 @@
 
 (defn set-freq
   [osc freq]
-  (let [ctx (.-context osc)]
-    (.setValueAtTime (.-frequency osc) freq (.-currentTime ctx))))
+  (let [ctx ($ osc -context)]
+    ($ ($ osc -frequency) setValueAtTime freq ($ ctx -currentTime))))
