@@ -6,6 +6,6 @@
 
 (enable-console-print!)
 
-(devtools/install!)
+(devtools/install! [:formatters :hints])
 
 (core/init!)
