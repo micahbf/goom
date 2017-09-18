@@ -1,7 +1,6 @@
 (ns goom.synth.patch
   (:require [goom.synth.oscillator :as osc]
             [goom.synth.envelope :as env]
-            [reagent.ratom :as r]
             [reagent.interop :refer [$ $!]]))
 
 (def ^:dynamic *ctx* (js/AudioContext.))
@@ -18,7 +17,7 @@
     {:square square}))
 
 (defn build []
-  (r/atom {:amp-envelope (build-amp-envelope)
+  (atom {:amp-envelope (build-amp-envelope)
            :oscillator (build-oscillator)}))
 
 (defn patch-up!
