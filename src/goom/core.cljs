@@ -3,11 +3,15 @@
      [reagent.core :as r]
      [goom.synth.patch :as s]))
 
+
+(def synth (s/build))
+(s/patch-up! @synth)
+
 ;; -------------------------
 ;; Views
 
 (defn note-button [name freq]
-  [:button {:on-click #(s/trigger freq)} name])
+  [:button {:on-click #(s/trigger! @synth freq)} name])
 
 (defn home-page []
   [:div [:div [:h2 "Goom"]]
